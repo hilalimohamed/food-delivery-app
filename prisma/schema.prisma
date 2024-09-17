@@ -1,0 +1,164 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  name           String?
+  password       String?
+  role           Role      @default(USER)
+  image          String?
+  phone          String?
+  streetAddress  String?
+  postalCode     String?
+  country        String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  accounts       Account[]
+  sessions       Session[]
+  orders         Order[]
+  Review         Review[]
+  locations      UserLocation[]
+}
+
+model Account {
+  id                 String    @id @default(uuid())
+  userId             String
+  user               User      @relation(fields: [userId], references: [id])
+  provider           String
+  providerAccountId  String
+  type               String?
+  access_token       String?
+  refresh_token      String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+}
+
+model Session {
+  id            String    @id @default(uuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  expires       DateTime
+  sessionToken  String    @unique
+}
+
+model UserLocation {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  latitude  Float
+  longitude Float
+  address   String
+  isPrimary Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model FoodItem {
+  id                String            @id @default(uuid())
+  name              String
+  description       String?
+  price             Float
+  imageUrl          String?
+  detailImages      Image[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  categoryId        String
+  category          Category          @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  orderItems        OrderItem[]
+  sizes             Size[]
+  extraIngredients  ExtraIngredient[]
+  reviews           Review[]
+  averageRating     Float             @default(0)
+  numberOfVoters    Int               @default(0)
+}
+
+model Image {
+  id                String            @id @default(uuid())
+  url               String
+  foodItemId        String
+  foodItem          FoodItem           @relation(fields: [foodItemId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  imageUrl  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  foodItems FoodItem[]
+}
+
+model Size {
+  id          String    @id @default(uuid())
+  name        String
+  extraPrice  Float
+  foodItem    FoodItem  @relation(fields: [foodItemId], references: [id], onDelete: Cascade)
+  foodItemId  String
+}
+
+model ExtraIngredient {
+  id          String    @id @default(uuid())
+  name        String
+  extraPrice  Float
+  foodItem    FoodItem  @relation(fields: [foodItemId], references: [id], onDelete: Cascade)
+  foodItemId  String
+}
+
+model Review {
+  id          String    @id @default(uuid())
+  rating      Int
+  comment     String?
+  foodItem    FoodItem  @relation(fields: [foodItemId], references: [id], onDelete: Cascade)
+  foodItemId  String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  createdAt   DateTime  @default(now())
+}
+
+
+
+model Order {
+  id          String       @id @default(uuid())
+  userId      String
+  user        User         @relation(fields: [userId], references: [id])
+  totalPrice  Float
+  status      String
+  address     String
+  latitude    Float
+  longitude   Float
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  orderItems  OrderItem[]
+}
+
+model OrderItem {
+  id                String    @id @default(uuid())
+  orderId           String
+  order             Order     @relation(fields: [orderId], references: [id])
+  foodItemId        String
+  foodItem          FoodItem  @relation(fields: [foodItemId], references: [id])
+  quantity          Int
+  size              String?
+  extraIngredients  String?
+}

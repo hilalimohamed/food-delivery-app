@@ -1,2 +1,1 @@
 app/api/auth/[...nextauth]/route.tsx
-app/(login and register)/login/page.tsx

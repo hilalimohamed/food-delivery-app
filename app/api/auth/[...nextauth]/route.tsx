@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+/* eslint-disable */
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth, { NextAuthOptions, DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -37,7 +37,7 @@ declare module "next-auth/jwt" {
     role: string;
   }
 }
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -122,5 +122,8 @@ export const authOptions: NextAuthOptions = {
 
 const handler = (req: NextApiRequest, res: NextApiResponse) =>
   NextAuth(req, res, authOptions);
+
+// const handler = (req: NextRequest) =>
+//   NextAuth(req, NextResponse.next(), authOptions);
 
 export { handler as GET, handler as POST };

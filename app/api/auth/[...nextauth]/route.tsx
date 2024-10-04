@@ -1,4 +1,4 @@
-// @ts-nocheck
+/* eslint-disable */ 
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth, { NextAuthOptions, DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";

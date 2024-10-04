@@ -1,3 +1,12 @@
+// {
+//   "extends": "next/core-web-vitals",
+//   "rules": {
+//     "react/no-unescaped-entities": "off",
+//     "@next/next/no-img-element": "off",
+//     "react-hooks/rules-of-hooks": "off",
+//     "react-hooks/exhaustive-deps": "off"
+//   }
+// }
 {
   "extends": "next/core-web-vitals",
   "rules": {
@@ -5,5 +14,13 @@
     "@next/next/no-img-element": "off",
     "react-hooks/rules-of-hooks": "off",
     "react-hooks/exhaustive-deps": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
 }

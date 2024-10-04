@@ -15,7 +15,7 @@ interface FormValues {
   password: string;
   confirmpassword: string;
 }
-export default function page() {
+export default function Page() {
   const { data: session } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState("Register");

@@ -8,6 +8,8 @@ import CatgList from "./CatgList";
 import { Button } from "@/components/ui/button";
 import { CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
+import toast from "react-hot-toast";
+import useSound from "use-sound";
 
 type Category = {
   id: string;
@@ -31,6 +33,8 @@ export default function Categories({ categories }: { categories: Category[] }) {
   const [allcategories, setAllcategories] = useState<Category[]>(categories);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
 
+  const [playSuccessSound] = useSound("/sounds/creation-sound.mp3");
+
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (formData) => {
@@ -41,6 +45,8 @@ export default function Categories({ categories }: { categories: Category[] }) {
       });
       if (response.data.message === "category created") {
         setAllcategories((prev) => [...prev, response.data.category]);
+        playSuccessSound();
+        toast.success("Category created successfully!");
       }
       reset();
     } catch (error) {
@@ -141,8 +147,8 @@ export default function Categories({ categories }: { categories: Category[] }) {
 
         <h2 className="text-lg font-semibold mb-4">All Categories</h2>
         <ul className="grid grid-cols-3 gap-6">
-          {allcategories.map((category) => (
-            <CatgList key={category.id} category={category} />
+          {allcategories.map((category, index) => (
+            <CatgList key={index} category={category} />
           ))}
         </ul>
       </div>

@@ -16,7 +16,7 @@ interface FormValues {
   password: string;
 }
 
-export default function LoginForm() {
+export default function Page() {
   const session = useSession();
   const [loading, setLoading] = useState("Log In");
   const [loadingSocial, setLoadingSocial] = useState("nothing");

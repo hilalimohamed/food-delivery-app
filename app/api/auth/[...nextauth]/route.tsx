@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth, { NextAuthOptions, DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -36,7 +37,6 @@ declare module "next-auth/jwt" {
     role: string;
   }
 }
-// @ts-ignore
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({

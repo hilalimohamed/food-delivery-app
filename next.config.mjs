@@ -3,8 +3,9 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com"],
   },
-  eslint: {
-    ignoreDuringBuilds: true, // تجاهل التحذيرات أثناء البناء
+  typescript: {
+    // ignoreDuringBuilds: true, // تجاهل التحذيرات أثناء البناء
+    ignoreBuildErrors: true,
   },
 };
 

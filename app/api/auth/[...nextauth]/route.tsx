@@ -37,6 +37,9 @@ declare module "next-auth/jwt" {
     role: string;
   }
 }
+type CombineRequest = Request & NextApiRequest;
+type CombineResponse = Response & NextApiResponse;
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -118,12 +121,10 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.AUTH_SECRET,
-}as NextAuthOptions;
+} as NextAuthOptions;
 
-const handler = (req: NextApiRequest, res: NextApiResponse) =>
+// const handler = (req: NextApiRequest, res: NextApiResponse) =>
+const handler = (req: CombineRequest, res: CombineResponse) =>
   NextAuth(req, res, authOptions);
-
-// const handler = (req: NextRequest) =>
-//   NextAuth(req, NextResponse.next(), authOptions);
 
 export { handler as GET, handler as POST };

@@ -32,19 +32,38 @@ type CartState = {
 };
 
 // Custom localStorage wrapper with correct typing
+// const customStorage: PersistStorage<CartState> = {
+//   getItem: (name) => {
+//     const item = localStorage.getItem(name);
+//     if (item) {
+//       return JSON.parse(item);
+//     }
+//     return null;
+//   },
+//   setItem: (name, value) => {
+//     localStorage.setItem(name, JSON.stringify(value));
+//   },
+//   removeItem: (name) => {
+//     localStorage.removeItem(name);
+//   },
+// };
 const customStorage: PersistStorage<CartState> = {
   getItem: (name) => {
-    const item = localStorage.getItem(name);
-    if (item) {
-      return JSON.parse(item);
+    if (typeof window !== "undefined") {
+      const item = window.localStorage.getItem(name);
+      return item ? JSON.parse(item) : null;
     }
     return null;
   },
   setItem: (name, value) => {
-    localStorage.setItem(name, JSON.stringify(value));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(name, JSON.stringify(value));
+    }
   },
   removeItem: (name) => {
-    localStorage.removeItem(name);
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem(name);
+    }
   },
 };
 

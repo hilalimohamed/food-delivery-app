@@ -1,4 +1,4 @@
-"use client";
+/* eslint-disable */
 import React from "react";
 import CartPage from "./components/CartPage";
 

@@ -158,6 +158,10 @@ export const useCartStore = create<CartState>()(
       name: "cart-storage", // unique name
       //   getStorage: () => localStorage, // (optional) by default the 'localStorage' is used
       storage: customStorage, // Use 'storage' instead of 'getStorage'
+      version: 1,
+      onRehydrateStorage: () => (state) => {
+        console.log("Rehydrating state", state);
+      },
     }
   )
 );

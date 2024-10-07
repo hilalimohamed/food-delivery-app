@@ -1,8 +1,8 @@
-/* eslint-disable */
+"use client";
 import React from "react";
 import CartPage from "./components/CartPage";
 
-export default function page() {
+export default function Page() {
   return (
     <div>
       <CartPage />

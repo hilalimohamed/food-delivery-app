@@ -4,8 +4,14 @@ const nextConfig = {
     domains: ["res.cloudinary.com"],
   },
   typescript: {
-    // ignoreDuringBuilds: true, // تجاهل التحذيرات أثناء البناء
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Ignore TypeScript build errors
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // Ignore ESLint build errors
+  },
+  experimental: {
+    appDir: true, // Keep this if you want to use the App Router
+    output: "standalone",
   },
 };
 

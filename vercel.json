@@ -1,0 +1,9 @@
+{
+  "ignore": ["app/cart/**"],
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ]
+}

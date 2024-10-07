@@ -1,9 +1,9 @@
 {
-  "ignore": ["app/cart/**"],
-  "builds": [
+  "outputDirectory": "app",
+  "routes": [
     {
-      "src": "next.config.js",
-      "use": "@vercel/next"
+      "src": "/cart/(.*)",
+      "dest": "/app/cart/$1"
     }
   ]
 }

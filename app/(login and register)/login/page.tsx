@@ -55,8 +55,6 @@ export default function Page() {
       }
     } catch (error: any) {
       console.error("Login error:", error);
-
-      // Display an error message to the user
       toast.error(
         error.response?.data?.message || "An unexpected error occurred."
       );

@@ -54,11 +54,7 @@ export default function Page() {
       }
     } catch (error: any) {
       console.error("Registration error:", error.message);
-      console.error(error.stack);
-      return NextResponse.json(
-        { message: "an error occurred" },
-        { status: 500 }
-      );
+      toast.error(error.response.data.message);
     } finally {
       setLoading("Register");
     }

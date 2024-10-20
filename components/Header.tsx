@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { MdLocalGroceryStore } from "react-icons/md";
 import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
@@ -22,13 +23,21 @@ export default function Header() {
           <div className="absolute inset-0 bg-black opacity-100 rounded-full"></div>
 
           {/* Content wrapper */}
-          <div className="relative flex justify-between items-center lg:mx-10 p-6">
+          <div className="relative flex justify-between items-center lg:mx-10 p-2">
             <Link href="/">
-              <h1 className="text-xl font-semibold font-serif flex items-end text-white">
+              <h1 className="text-2xl font-semibold flex items-end">
+                <span className="text-primary text-3xl">.</span>
+                <span className="text-white">Fo</span>
                 <span>
-                  <Image src={"/home/icon.PNG"} width={40} height={40} alt="" />
+                  <Image
+                    src={"/home/logo/logo.PNG"}
+                    width={90}
+                    height={90}
+                    alt=""
+                  />
                 </span>
-                ilali <span className="text-primary text-2xl">.</span>
+                <span className="text-white">oD</span>
+                <span className="text-primary text-3xl">.</span>
               </h1>
             </Link>
             <Nav />
@@ -85,7 +94,7 @@ export default function Header() {
   }
 
   return (
-    <header className="mt-5  rounded-full font-serif">
+    <header className="rounded-full font-serif">
       <div className="relative rounded-full">
         {/* This is the overlay that provides the opacity */}
         <div className="absolute inset-0  opacity-20 rounded-full"></div>
@@ -94,10 +103,17 @@ export default function Header() {
         <div className="relative flex justify-between items-center lg:mx-10 p-6">
           <Link href="/">
             <h1 className="text-2xl font-semibold flex items-end">
+              <span className="text-primary text-3xl">.</span>
+              Fo
               <span>
-                <Image src={"/home/icon.PNG"} width={50} height={50} alt="" />
+                <Image
+                  src={"/home/logo/logo.PNG"}
+                  width={90}
+                  height={90}
+                  alt=""
+                />
               </span>
-              ilali <span className="text-primary text-3xl">.</span>
+              oD <span className="text-primary text-3xl">.</span>
             </h1>
           </Link>
           <Nav />
@@ -126,24 +142,24 @@ export default function Header() {
                 </div>
               </>
             ) : (
-              <>
+              <div className="flex gap-5 items-center">
                 <Link
                   href="/login"
-                  className="font-bold text-white hover:text-black"
+                  className="font-bold text-black hover:text-primary"
                 >
                   Login
                 </Link>
-                <Link href="/register">
+                <Link href="/register" className="mr-4">
                   <Button className="rounded-full font-bold text-base text-white">
                     Register
                   </Button>
                 </Link>
-              </>
+              </div>
             )}
             <Link href="/cart">
-              <MdOutlineShoppingCart
+              <MdLocalGroceryStore
                 size={22}
-                className="cursor-pointer text-white hover:text-black"
+                className="cursor-pointer text-black hover:text-primary"
               />
             </Link>
           </div>

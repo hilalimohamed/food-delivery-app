@@ -34,17 +34,18 @@ export default function Front() {
             <span className="text-primary">Food</span>
           </h1>
         </div>
-        <p className="w-11/12 mb-14 font-semibold font-serif text-base">
-          nhgiksdhgn hnjksd hsdkdfghshdjk hsdhfjk shkdgh ksd hfgshdqi ozethi
-          hiurebg oiuh izezrioutazi gbukjb guiguig b pzrhpo hpoh pzoerhpiozh
-          epiot.
+        <p className="w-full mb-14 font-semibold font-serif text-base">
+          Discover the true taste of delicious food with our seamless delivery
+          service. Whether you’re craving something savory or sweet, we’ve got
+          everything to satisfy your appetite. Simply browse, select, and enjoy
+          fresh, mouthwatering meals delivered right to your doorstep.
         </p>
         <div className="flex gap-5">
-          <Button className="rounded-full gap-2 font-semibold text-white py-6">
+          <Button className="rounded-full gap-2 shadow-xl font-semibold text-white py-6">
             ORDER NOW
             <FaArrowRight />
           </Button>
-          <Button className="bg-transparent hover:bg-transparent text-base rounded-full gap-2 font-semibold text-white py-6">
+          <Button className="bg-transparent hover:bg-transparent shadow-2xl text-base rounded-full gap-2 font-semibold text-primary py-6">
             Learn more
             <FaArrowRight />
           </Button>

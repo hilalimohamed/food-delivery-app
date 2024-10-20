@@ -3,6 +3,10 @@
     {
       "src": "/cart/(.*)",
       "dest": "/app/cart/$1"
+    },
+    {
+      "src": "/profile/(.*)",
+      "dest": "/app/profile/$1"
     }
   ]
 }

@@ -8,13 +8,11 @@ import bcrypt from "bcrypt";
 async function main() {
   const adminEmail = "samir@gmail.com";
 
-  // Check if the admin user already exists
   const existingAdmin = await prisma.user.findUnique({
     where: { email: adminEmail },
   });
 
   if (!existingAdmin) {
-    // Hash the admin password
     const hashedPassword = await bcrypt.hash("samirA1&", 10);
 
     // Create the default admin user

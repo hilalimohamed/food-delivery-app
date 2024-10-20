@@ -62,31 +62,32 @@ export default function Page() {
 
   return (
     <div className="flex place-items-center justify-center mt-8 dark:bg-[#1F1F1F]">
-      <div className="hidden md:block lg:block border-2 w-[340px] h-[400px] shadow-2xl border-r-primary border-primary">
+      <div className="relative hidden md:block lg:block border-2 w-[340px] h-[400px] shadow-2xl border-r-primary border-primary">
         <Image
-          src="/home/h.avif"
+          src="/home/logo/logo.PNG"
           alt=""
           width={360}
           height={504}
           priority={true}
+          className="mt-10"
         />
-        <h1 className="text-2xl text-center w-full p-[5px] text-primary font-mono font-bold cursor-default dark:bg-white">
-          WELCOME TO CHAT
+        <h1 className="absolute bottom-10 text-2xl text-center w-full p-[5px] text-primary font-mono font-bold cursor-default dark:bg-white">
+          Eating Food
         </h1>
       </div>
       <div className="shadow-2xl p-6 px-9 w-[350px] h-[400px] border-2 md:border-l-0 lg:border-l-0 border-primary dark:bg-[#282828]">
-        <h1 className="text-primary font-bold text-center mb-2 text-xl">
+        <h1 className="text-primary font-bold text-center mb-1 text-xl">
           Register
         </h1>
         <Image
-          src="/home/h.avif"
+          src="/home/logo/logo.PNG"
           alt=""
-          width={100}
+          width={120}
           height={140}
           priority={true}
-          className="mx-auto my-auto mb-2"
+          className="mx-auto my-auto mb-1"
         />
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             placeholder="User Name"

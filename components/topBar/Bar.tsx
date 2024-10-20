@@ -1,21 +1,3 @@
-// import Link from "next/link";
-// import React from "react";
-
-// function Bar() {
-//   return (
-//     <div>
-//       <div className="flex gap-10 justify-center items-center">
-//         <Link href="/profile">profile</Link>
-//         <Link href="/admin/categories">categories</Link>
-//         <Link href="/admin/menuitems">menu items</Link>
-//         <Link href="/admin/users">users</Link>
-//         <Link href="/orders">orders</Link>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Bar;
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

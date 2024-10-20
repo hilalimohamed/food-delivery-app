@@ -70,13 +70,16 @@ export default function Categories({ categories }: { categories: Category[] }) {
 
   return (
     <div className="container mx-auto p-4 mt-5">
-      <div className="mx-44">
-        <h1 className="text-xl font-bold mb-4">Manage Categories</h1>
+      <div className="mx-auto max-w-md lg:max-w-4xl">
+        <h1 className="text-xl font-bold mb-4 text-center lg:text-left">
+          Manage Categories
+        </h1>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mb-4 grid grid-cols-1 gap-5"
+          className="mb-4 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10"
         >
+          {/* Image Upload Section */}
           <div className="flex flex-col items-center">
             <div className="relative">
               <CldUploadButton
@@ -119,34 +122,42 @@ export default function Categories({ categories }: { categories: Category[] }) {
             )}
           </div>
 
-          <label className="block text-sm font-medium text-gray-700">
-            Category Name
-          </label>
+          {/* Category Name Input */}
+          <div className="col-span-1 lg:col-span-2">
+            <label className="block text-sm font-medium text-gray-700">
+              Category Name
+            </label>
 
-          <input
-            {...register("name", { required: true })}
-            placeholder="Enter category name"
-            className="mt-1 block w-full p-2.5 border border-gray-300 rounded-md"
-          />
-          <div className="grid grid-cols-2 gap-4">
+            <input
+              {...register("name", { required: true })}
+              placeholder="Enter category name"
+              className="mt-1 block w-full p-2.5 border border-gray-300 rounded-md"
+            />
+          </div>
+
+          {/* Submit and Cancel Buttons */}
+          <div className="col-span-1 lg:col-span-2 flex gap-4">
             <Button
               type="submit"
-              className="bg-primary text-white py-2 rounded-md hover:bg-orange-700"
+              className="w-full bg-primary text-white py-2 rounded-md hover:bg-orange-700"
             >
               Create
             </Button>
             <Button
               type="button"
               onClick={handleCancel}
-              className="bg-gray-200 text-black py-2 rounded-md hover:bg-gray-300"
+              className="w-full bg-gray-200 text-black py-2 rounded-md hover:bg-gray-300"
             >
               Cancel
             </Button>
           </div>
         </form>
 
-        <h2 className="text-lg font-semibold mb-4">All Categories</h2>
-        <ul className="grid grid-cols-3 gap-6">
+        {/* List of All Categories */}
+        <h2 className="text-lg font-semibold mb-4 text-center lg:text-left">
+          All Categories
+        </h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-h-80 lg:max-h-[600px] overflow-y-auto">
           {allcategories.map((category, index) => (
             <CatgList key={index} category={category} />
           ))}

@@ -116,6 +116,7 @@
 //     </div>
 //   );
 // }
+
 "use client";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -141,9 +142,6 @@ export default function Categories({ categories }: { categories: Category[] }) {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
-  // Calculate slidesToShow based on the number of food items
-  const slidesToShow = categories.length < 4 ? 4 : 4;
-
   const setSelectedCategory = useStore((state) => state.setSelectedCategory);
   const router = useRouter();
 
@@ -162,7 +160,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
   };
 
   return (
-    <div className="mx-20 mb-20 flex flex-col justify-center items-center">
+    <div className="mx-4 mb-20 lg:mx-20 flex flex-col justify-center items-center">
       <motion.div
         initial={{ y: 40, opacity: 0 }}
         whileInView={{
@@ -171,7 +169,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
           transition: { duration: 1, ease: "easeInOut" },
         }}
         viewport={{ once: true }}
-        className="text-5xl font-bold mb-5"
+        className="text-3xl lg:text-5xl font-bold mb-5 text-center"
       >
         Recipes by Category
       </motion.div>
@@ -183,7 +181,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
           transition: { duration: 1, ease: "easeInOut" },
         }}
         viewport={{ once: true }}
-        className="text-gray-600 mb-16 text-xl w-2/3 text-center"
+        className="text-gray-600 mb-16 text-base lg:text-xl w-full lg:w-2/3 text-center"
       >
         Excepteur sint occaecat cupidatat non qui proident, sunt culpa qui
         officia deserunmollit anim id est laborum.
@@ -218,9 +216,9 @@ export default function Categories({ categories }: { categories: Category[] }) {
         ) : null}
       </div>
 
-      <div className="flex justify-center items-center gap-3 w-full">
+      <div className="flex justify-center items-center gap-3 lg:w-full w-11/12">
         <Button
-          className={`text-3xl p-0.5 rounded-full ${
+          className={`text-3xl p-0.5 rounded-full hidden lg:block ${
             isBeginning ? "hidden" : "text-white"
           }`}
           onClick={() => swiperRef.current?.slidePrev()}
@@ -229,8 +227,16 @@ export default function Categories({ categories }: { categories: Category[] }) {
           <GrFormPrevious className="p-0.5" />
         </Button>
         <Swiper
-          spaceBetween={30}
-          slidesPerView={slidesToShow}
+          spaceBetween={10}
+          slidesPerView={1.2} // Display fewer slides on mobile
+          breakpoints={{
+            640: {
+              slidesPerView: 2, // For phones
+            },
+            1024: {
+              slidesPerView: 4, // For desktops
+            },
+          }}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => {
             setIsBeginning(swiper.isBeginning);
@@ -238,7 +244,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
           }}
           onReachEnd={() => setIsEnd(true)}
           onReachBeginning={() => setIsBeginning(true)}
-          className="my-10"
+          className="my-10 w-full"
         >
           {fullCategories.map((category, index) => (
             <SwiperSlide key={category.id}>
@@ -250,21 +256,21 @@ export default function Categories({ categories }: { categories: Category[] }) {
                   transition: { delay: 0.3, duration: 0.7, ease: "easeInOut" },
                 }}
                 viewport={{ once: true }}
-                className={`bg-gray-100 rounded-b-full overflow-hidden cursor-pointer ${
-                  index % 2 === 0 ? "translate-y-5" : "-translate-y-5"
-                }`}
+                className={`bg-gray-100 rounded-b-full overflow-hidden cursor-pointer`}
                 onClick={() => handleCategoryClick(category.id)} // Handle category click
               >
                 <div className="relative group">
                   <Image
-                    className="w-full h-60 rounded-b-full object-cover transform transition-transform duration-500 group-hover:-translate-y-11"
+                    className="w-full h-40 lg:h-60 rounded-b-full object-cover transform transition-transform duration-500 group-hover:-translate-y-11"
                     src={category.imageUrl || "/home/cover4.jpg"}
                     alt={category.name}
                     width={300}
                     height={160}
                   />
                   <div className="absolute bg-gray-100 bottom-0 left-0 w-full -translate-y-3 pb-2 m-1 text-center transition-transform duration-500 group-hover:translate-y-2">
-                    <h1 className="text-xl font-bold">{category.name}</h1>
+                    <h1 className="text-base lg:text-xl font-bold">
+                      {category.name}
+                    </h1>
                   </div>
                 </div>
               </motion.div>
@@ -272,7 +278,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
           ))}
         </Swiper>
         <Button
-          className={`text-3xl p-0.5 rounded-full ${isEnd ? "hidden" : "text-white"}`}
+          className={`text-3xl p-0.5 rounded-full hidden lg:block ${isEnd ? "hidden" : "text-white"}`}
           onClick={() => swiperRef.current?.slideNext()}
           disabled={isEnd}
         >

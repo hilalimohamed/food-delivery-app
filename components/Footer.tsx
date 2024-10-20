@@ -8,9 +8,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear(); // Get the current year
 
   return (
-    <footer className="bg-transparent text-black py-6 mt-5">
+    <footer className="bg-transparent text-black py-6 mt-12">
       <div className="container mx-auto flex flex-col items-center">
-        <h1 className="text-2xl font-semibold flex items-end mb-4">
+        <h1 className="text-2xl font-semibold flex items-end mb-2">
           <span className="text-primary text-3xl">.</span>
           Fo
           <span>
@@ -23,7 +23,7 @@ export default function Footer() {
           </span>
           oD <span className="text-primary text-3xl">.</span>
         </h1>
-        <div className="flex space-x-4 mb-4">
+        <div className="flex space-x-4 mb-2">
           <Link
             href="https://www.facebook.com"
             target="_blank"
@@ -42,7 +42,7 @@ export default function Footer() {
             <FaWhatsapp size={24} className="text-green-500 hover:text-black" />
           </Link>
         </div>
-        <div className="flex space-x-6 mb-4">
+        <div className="flex space-x-6 mb-2">
           {/* <Link href="/privacy-policy" className="text-sm hover:text-primary">
             Privacy Policy
           </Link>
@@ -57,7 +57,7 @@ export default function Footer() {
           </Link>
         </div>
         {/* Horizontal line */}
-        <hr className="border-gray-600 w-full mb-4" />
+        <hr className="border-gray-600 w-full mb-2" />
         <p className="text-sm">
           &copy; {currentYear} FooD. All rights reserved.
         </p>

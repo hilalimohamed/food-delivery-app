@@ -150,7 +150,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
     fullCategories.push({
       id: `placeholder-${fullCategories.length}`,
       name: "Coming Soon",
-      imageUrl: "/path/to/placeholder.jpg",
+      imageUrl: "/home/cover4.jpg",
     });
   }
 

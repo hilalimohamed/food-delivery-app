@@ -19,6 +19,7 @@ export default function Footer() {
               width={90}
               height={90}
               alt="Logo"
+              style={{ width: "auto", height: "auto" }}
             />
           </span>
           oD <span className="text-primary text-3xl">.</span>

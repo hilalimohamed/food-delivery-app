@@ -34,7 +34,8 @@ export default function Header() {
                     src={"/home/logo/logo.PNG"}
                     width={90}
                     height={90}
-                    alt=""
+                    alt="logo"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </span>
                 oD <span className="text-primary lg:text-3xl">.</span>
@@ -115,7 +116,8 @@ export default function Header() {
                   src={"/home/logo/logo.PNG"}
                   width={90}
                   height={90}
-                  alt=""
+                  alt="logo"
+                  style={{ width: "auto", height: "auto" }}
                 />
               </span>
               oD <span className="text-primary lg:text-3xl">.</span>

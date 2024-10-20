@@ -60,6 +60,7 @@ export default function Photo() {
               quality={100}
               width={490}
               height={440}
+              priority
             />
           </motion.div>
         </AnimatePresence>

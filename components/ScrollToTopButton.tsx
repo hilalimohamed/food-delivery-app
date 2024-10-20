@@ -29,14 +29,13 @@ export default function ScrollToTopButton() {
       {showButton && (
         <motion.button
           onClick={scrollToTop}
-          whileHover={{ scale: 1.1 }} // Framer Motion hover animation
-          whileTap={{ scale: 0.9 }} // Framer Motion click animation
-          initial={{ opacity: 0, y: 50 }} // Initial state for animation
-          animate={{ opacity: 1, y: 0 }} // Animation when button becomes visible
-          exit={{ opacity: 0, y: 50 }} // Exit animation
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
           className="fixed bottom-8 right-8  text-gray-700 bg-white rounded-full shadow-lg z-50 text-3xl"
         >
-          {/* ↑ */}
           <FaCircleArrowUp />
         </motion.button>
       )}

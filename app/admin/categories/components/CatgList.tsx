@@ -176,14 +176,16 @@ export default function CatgList({ category }: { category: Category }) {
                 <Button className="bg-red-500 text-white">Delete</Button>
               </Dialog.Trigger>
               <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
-                <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg">
+                <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50" />
+
+                <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-3/4 lg:w-1/3">
                   <Dialog.Title className="text-lg font-bold">
                     Confirm Deletion
                   </Dialog.Title>
-                  <Dialog.Description>
+                  <Dialog.Description className="mt-2 text-gray-600">
                     Are you sure you want to delete this category?
                   </Dialog.Description>
+
                   <div className="mt-4 grid grid-cols-2 gap-4">
                     <Button
                       onClick={dltCategory}

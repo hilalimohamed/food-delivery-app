@@ -81,16 +81,17 @@ export default function Page() {
   // mt-8 sm:mx-auto sm:w-full sm:max-w-md
   return (
     <div className="flex place-items-center mt-2 justify-center dark:bg-[#1F1F1F]">
-      <div className="hidden md:block lg:block border-2 w-[340px] h-[444px] shadow-2xl border-r-primary border-primary">
+      <div className="relative hidden md:block lg:block border-2 w-[340px] h-[444px] shadow-2xl border-r-primary border-primary">
         <Image
-          src="/home/h.avif"
+          src="/home/logo/logo.PNG"
           alt=""
           width={360}
           height={544}
           priority={true}
+          className="mt-10"
         />
-        <h1 className="text-2xl text-center w-full bg-primary py-8 px-12 border-b-4 text-white font-mono border-primary font-bold cursor-default">
-          WELCOME TO EAT
+        <h1 className="absolute bottom-0 text-2xl text-center w-full bg-primary py-8 px-12 border-b-4 text-white font-mono border-primary font-bold cursor-default">
+          Eating Food
         </h1>
       </div>
       <div className="shadow-2xl py-5 px-9 border-2 md:border-l-0 lg:border-l-0 border-primary h-[471px] max-h-[444px] dark:bg-[#282828]">
@@ -98,10 +99,10 @@ export default function Page() {
           Log In
         </h1>
         <Image
-          src="/home/h.avif"
+          src="/home/logo/logo.PNG"
           alt=""
-          width={88}
-          height={88}
+          width={120}
+          height={120}
           priority={true}
           className="mx-auto my-auto mb-2"
         />

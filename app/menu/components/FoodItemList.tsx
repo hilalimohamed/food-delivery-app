@@ -195,7 +195,7 @@ const FoodItemList: React.FC<FoodItemListProps> = ({
       </div>
 
       {/* Display items based on selected category or search query (whichever is used) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-h-[300px] overflow-y-auto">
         {selectedCategory || searchQuery
           ? categoryFilteredItems
               .filter((item) => searchFilteredItems.includes(item))

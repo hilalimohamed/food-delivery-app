@@ -8,6 +8,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdLocalGroceryStore } from "react-icons/md";
 import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import MobilNav from "./MobilNav";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -17,18 +18,18 @@ export default function Header() {
 
   if (pathname !== "/") {
     return (
-      <header className="mt-5 mx-32 rounded-full font-serif">
+      <header className="lg:mt-5 lg:mx-32 rounded-full font-serif">
         <div className="relative rounded-full">
           {/* This is the overlay that provides the opacity */}
-          <div className="absolute inset-0 bg-black opacity-100 rounded-full"></div>
+          <div className="absolute inset-0 lg:bg-black opacity-100 rounded-full"></div>
 
           {/* Content wrapper */}
-          <div className="relative flex justify-between items-center lg:mx-10 p-2">
+          <div className="relative flex justify-between items-center lg:mx-10 p-6">
             <Link href="/">
-              <h1 className="text-2xl font-semibold flex items-end">
-                <span className="text-primary text-3xl">.</span>
-                <span className="text-white">Fo</span>
-                <span>
+              <h1 className="text-sm lg:text-2xl font-semibold flex items-end">
+                <span className="text-primary lg:text-3xl">.</span>
+                Fo
+                <span className="w-1/3 lg:w-1/2">
                   <Image
                     src={"/home/logo/logo.PNG"}
                     width={90}
@@ -36,12 +37,13 @@ export default function Header() {
                     alt=""
                   />
                 </span>
-                <span className="text-white">oD</span>
-                <span className="text-primary text-3xl">.</span>
+                oD <span className="text-primary lg:text-3xl">.</span>
               </h1>
             </Link>
-            <Nav />
-            <div className="flex items-center gap-3">
+            <div className="hidden lg:block">
+              <Nav />
+            </div>
+            <div className="hidden lg:flex items-center gap-3">
               {session ? (
                 <>
                   <div className="flex items-center gap-2">
@@ -87,6 +89,9 @@ export default function Header() {
                 />
               </Link>
             </div>
+            <div className=" lg:hidden">
+              <MobilNav />
+            </div>
           </div>
         </div>
       </header>
@@ -97,15 +102,15 @@ export default function Header() {
     <header className="rounded-full font-serif">
       <div className="relative rounded-full">
         {/* This is the overlay that provides the opacity */}
-        <div className="absolute inset-0  opacity-20 rounded-full"></div>
+        <div className="absolute inset-0 opacity-20 rounded-full"></div>
 
         {/* Content wrapper */}
         <div className="relative flex justify-between items-center lg:mx-10 p-6">
           <Link href="/">
-            <h1 className="text-2xl font-semibold flex items-end">
-              <span className="text-primary text-3xl">.</span>
+            <h1 className="text-sm lg:text-2xl font-semibold flex items-end">
+              <span className="text-primary lg:text-3xl">.</span>
               Fo
-              <span>
+              <span className="w-1/3 lg:w-1/2">
                 <Image
                   src={"/home/logo/logo.PNG"}
                   width={90}
@@ -113,11 +118,13 @@ export default function Header() {
                   alt=""
                 />
               </span>
-              oD <span className="text-primary text-3xl">.</span>
+              oD <span className="text-primary lg:text-3xl">.</span>
             </h1>
           </Link>
-          <Nav />
-          <div className="flex items-center gap-1 justify-center">
+          <div className="hidden lg:flex">
+            <Nav />
+          </div>
+          <div className="hidden lg:flex items-center gap-1 justify-center">
             {session ? (
               <>
                 <div className="flex items-center gap-2">
@@ -162,6 +169,9 @@ export default function Header() {
                 className="cursor-pointer text-black hover:text-primary"
               />
             </Link>
+          </div>
+          <div className="lg:hidden">
+            <MobilNav />
           </div>
         </div>
       </div>

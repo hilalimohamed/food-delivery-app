@@ -3,10 +3,10 @@ import Categories from './components/Categories';
 import getCategories from '@/app/action/getCategories';
 
 async function page() {
-  const getcategories = await getCategories()
+  const categories = await getCategories()
   return (
     <div>
-      <Categories categories={getcategories} />
+      <Categories categories={categories} />
     </div>
   );
 }

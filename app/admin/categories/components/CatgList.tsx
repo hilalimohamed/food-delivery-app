@@ -43,7 +43,7 @@ export default function CatgList({ category }: { category: Category }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(
-    category.imageUrl || null
+    category?.imageUrl || null
   );
 
   const {
@@ -52,7 +52,7 @@ export default function CatgList({ category }: { category: Category }) {
     setValue,
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues: { name: category.name, imageUrl: category.imageUrl },
+    defaultValues: { name: category?.name, imageUrl: category?.imageUrl },
   });
 
   const dltCategory = async () => {
@@ -156,10 +156,10 @@ export default function CatgList({ category }: { category: Category }) {
         </form>
       ) : (
         <>
-          <span>{category.name}</span>
+          <span>{category?.name}</span>
           <Image
-            src={category.imageUrl || "/home/food.PNG"}
-            alt={category.name}
+            src={category?.imageUrl || "/home/food.PNG"}
+            alt={category?.name}
             className="w-full h-32 object-cover rounded-md"
             width={200}
             height={200}

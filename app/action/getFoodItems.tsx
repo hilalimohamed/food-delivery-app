@@ -9,6 +9,9 @@ export default async function getFoodItems() {
         extraIngredients: true,
         detailImages: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     return foodItem;
   } catch (error) {

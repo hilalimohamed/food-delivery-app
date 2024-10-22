@@ -42,8 +42,8 @@ export default function Photo() {
   }, [images.length]);
 
   return (
-    <div>
-      <div className="w-[250px] h-[220px] lg:h-[420px] lg:w-[450px] ml-16 mb-6 lg:mb-0 flex items-center justify-center relative">
+    <div className="">
+      <div className="w-full h-[220px] lg:h-[420px] lg:w-[450px] mb-6 lg:mb-0 flex items-center justify-center  relative">
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={currentImageIndex}

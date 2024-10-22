@@ -145,7 +145,6 @@ export default function MobilNav() {
             )}
           </div>
 
-          {/* Cart icon */}
           <Link href="/cart" className="flex justify-center mt-8">
             <motion.div
               className="flex"

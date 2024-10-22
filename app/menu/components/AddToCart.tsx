@@ -91,89 +91,58 @@ export default function AddToCart({ fooditem }: { fooditem: FoodItemType }) {
     setIsDialogOpen(false);
   };
 
-  //close
 
   return (
     <div>
       <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <Dialog.Trigger asChild>
           <Button
-            className="add-to-cart-button"
+            className="text-white w-full"
             onClick={() => setIsDialogOpen(true)}
           >
             Add to Cart
           </Button>
         </Dialog.Trigger>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg">
-            <Dialog.Title className="text-lg font-bold">
+          <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50 z-20" />
+          <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 sm:p-6 z-20 rounded-lg shadow-lg w-[90vw] sm:w-[400px] max-h-[90vh] overflow-y-auto">
+            <Dialog.Title className="text-lg font-bold text-center">
               {fooditem.name}
             </Dialog.Title>
-            <Dialog.Description>{fooditem.description}</Dialog.Description>
-            {`Base Price: ${fooditem.price} dh`}
-
-            {/* <div className="sizes">
-              <h4>Choose a Size:</h4>
-              {fooditem.sizes.map((size) => (
-                <div key={size.id}>
-                  <label>
-                    <input type="radio" name="size" value={size.id} />
-                    {`${size.name} (+$${size.extraPrice})`}
-                  </label>
-                </div>
-              ))}
+            <Dialog.Description className="text-center text-gray-600 mb-4">
+              {fooditem.description}
+            </Dialog.Description>
+            <div className="text-center font-bold mb-4">
+              Base Price: {fooditem.price} dh
             </div>
 
-            <div className="extra-ingredients">
-              <h4>Choose Extra Ingredients:</h4>
-              {fooditem.extraIngredients.map((ingredient) => (
-                <div key={ingredient.id}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="extraIngredient"
-                      value={ingredient.id}
-                    />
-                    {`${ingredient.name} (+$${ingredient.extraPrice})`}
-                  </label>
-                </div>
-              ))}
-            </div> */}
-            <Dialog.Title>Customize Your Order</Dialog.Title>
+            <Dialog.Title className="text-lg font-semibold mb-2">
+              Customize Your Order
+            </Dialog.Title>
+
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* <label>Size:</label>
-                <Controller
-                  name="size"
-                  control={control}
-                  render={({ field }) => (
-                    <select {...field}>
-                      <option value="">Select a size</option>
-                      {fooditem.sizes.map((size) => (
-                        <option key={size.id} value={size.name}>
-                          {size.name} (+${size.extraPrice.toFixed(2)})
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                /> */}
-              <div>
+              <div className="mb-4">
+                <label className="block mb-2 font-semibold">Size:</label>
                 {fooditem.sizes.map((size) => (
-                  <div key={size.id}>
+                  <div key={size.id} className="mb-2">
                     <Controller
                       name="size"
                       control={control}
                       render={({ field }) => (
-                        <label>
+                        <label className="flex items-center space-x-2">
                           <input
                             type="radio"
                             value={size.name}
                             checked={field.value === size.name}
                             onChange={field.onChange}
+                            className="form-radio"
                           />
-                          {size.name}{" "}
-                          {size.extraPrice !== 0 &&
-                            `(${size.extraPrice.toFixed(2)} dh)`}
+                          <span>{size.name}</span>
+                          {size.extraPrice !== 0 && (
+                            <span className="text-gray-500">
+                              (+{size.extraPrice.toFixed(2)} dh)
+                            </span>
+                          )}
                         </label>
                       )}
                     />
@@ -181,15 +150,17 @@ export default function AddToCart({ fooditem }: { fooditem: FoodItemType }) {
                 ))}
               </div>
 
-              <div>
-                <label>Extra Ingredients:</label>
+              <div className="mb-4">
+                <label className="block mb-2 font-semibold">
+                  Extra Ingredients:
+                </label>
                 {fooditem.extraIngredients.map((extra) => (
-                  <div key={extra.id}>
+                  <div key={extra.id} className="mb-2">
                     <Controller
                       name="extraIngredients"
                       control={control}
                       render={({ field }) => (
-                        <label>
+                        <label className="flex items-center space-x-2">
                           <input
                             type="checkbox"
                             value={extra.name}
@@ -202,8 +173,12 @@ export default function AddToCart({ fooditem }: { fooditem: FoodItemType }) {
                                 : [...field.value, extra.name];
                               field.onChange(newValue);
                             }}
+                            className="form-checkbox"
                           />
-                          {extra.name} (+{extra.extraPrice.toFixed(2)} dh)
+                          <span>{extra.name}</span>
+                          <span className="text-gray-500">
+                            (+{extra.extraPrice.toFixed(2)} dh)
+                          </span>
                         </label>
                       )}
                     />
@@ -211,15 +186,17 @@ export default function AddToCart({ fooditem }: { fooditem: FoodItemType }) {
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-4 mt-4 justify-center">
                 <Button
                   type="submit"
-                  className=" bg-green-500 text-white rounded"
+                  className="bg-green-500 text-white rounded py-2 px-4 w-full sm:w-auto"
                 >
                   Add to Cart +{totalPrice.toFixed(2)} dh
                 </Button>
                 <Dialog.Close asChild>
-                  <Button>Cancel</Button>
+                  <Button className="bg-gray-300 rounded py-2 px-4 w-full sm:w-auto">
+                    Cancel
+                  </Button>
                 </Dialog.Close>
               </div>
             </form>

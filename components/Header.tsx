@@ -90,7 +90,7 @@ export default function Header() {
                 />
               </Link>
             </div>
-            <div className=" lg:hidden">
+            <div className="lg:hidden">
               <MobilNav />
             </div>
           </div>
@@ -102,10 +102,8 @@ export default function Header() {
   return (
     <header className="rounded-full font-serif">
       <div className="relative rounded-full">
-        {/* This is the overlay that provides the opacity */}
         <div className="absolute inset-0 opacity-20 rounded-full"></div>
 
-        {/* Content wrapper */}
         <div className="relative flex justify-between items-center lg:mx-10 p-6">
           <Link href="/">
             <h1 className="text-sm lg:text-2xl font-semibold flex items-end">
